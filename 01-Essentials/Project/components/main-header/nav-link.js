@@ -1,5 +1,7 @@
 "use client";
 
+// This was in the header but we moved it as client side rendering should be pushed the farthest possible on the component tree
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
