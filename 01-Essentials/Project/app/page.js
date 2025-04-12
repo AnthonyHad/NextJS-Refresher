@@ -51,3 +51,10 @@ export default function Home() {
     </>
   );
 }
+
+// npm run build
+// npm  start
+
+// >> This will allow us to test prod builds
+
+// Next JS has aggressive caching and does pre-generating

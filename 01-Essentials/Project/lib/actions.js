@@ -2,12 +2,13 @@
 
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 function isInvalidText(text) {
   return !text || text.trim() === "";
 }
 
-export async function shareMeal(formData) {
+export async function shareMeal(prevState, formData) {
   // Creates a server action only executed on a server
   //   "use server";
 
@@ -30,10 +31,17 @@ export async function shareMeal(formData) {
     !meal.image ||
     meal.image.size === 0
   ) {
-    throw new Error("Invalid input");
+    // throw new Error("Invalid input");
+    return {
+      message: "Invalid Input",
+    };
   }
 
   await saveMeal(meal);
+  // Using layout will revalidate all nested pages. The default is 'page'
+  revalidatePath("/meals");
 
   redirect("/meals");
 }
+
+//import { useActionState } from 'react'
