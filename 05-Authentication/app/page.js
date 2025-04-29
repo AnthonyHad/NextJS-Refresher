@@ -1,3 +1,5 @@
+// Best to review that section on GH
+
 import AuthForm from "@/components/auth-form";
 
 export default async function Home({ searchParams }) {
